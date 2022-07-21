@@ -3,7 +3,6 @@ export class StringCalculator {
         let sol = 0;
         let valuesObj = { str_values:str_values } // Save str_values as obj so we can remove delimiter setter
         const delim = this.getDelim(valuesObj);
-        console.log(delim);
         const re = new RegExp((delim+"|\n")); // RegExp for delim or \n
         const values = valuesObj.str_values.split(re);
         let contains_neg = false;
@@ -27,8 +26,8 @@ export class StringCalculator {
         return sol;
     }
 
-    private getDelim(valuesObj): Array {
-        let delim = [","];
+    private getDelim(valuesObj): string {
+        let delim = ",";
         if (valuesObj.str_values.length > 3) {
             if (valuesObj.str_values.slice(0,2) == "//") {
                 console.log("here");
@@ -37,6 +36,7 @@ export class StringCalculator {
                 valuesObj.str_values = valuesObj.str_values.slice(delim_end_index+1);
             }
         }
+        delim = delim.replace("][", "]|[");
         return delim;
     }
 }

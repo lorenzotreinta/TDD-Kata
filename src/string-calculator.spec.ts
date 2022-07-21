@@ -32,5 +32,8 @@ describe("First Tests", () => {
     it("should be 6", () => {
         expect(stringCalculator.add("//[*][%]\n1*2%3")).toBe(6);
     });
+    it("should be 6", () => {
+        expect(stringCalculator.add("//[**][%@]\n1**2%@3")).toBe(6);
+    });
     
 });
